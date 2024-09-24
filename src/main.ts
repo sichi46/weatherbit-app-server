@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import "dotenv/config";
@@ -12,8 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/", () => {
-  return "API is LIVE";
+app.get("/", (_req: Request, res: Response) => {
+  return res.send("API live");
 });
 
 app.use("/weather", weatherRouter);
